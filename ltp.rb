@@ -1,4 +1,4 @@
-#32.2 introduction to puts----------
+#3.2 introduction to puts----------
 
 puts 1 + 2
 
@@ -327,7 +327,7 @@ puts letters.swapcase
 #swaps it to AaBbCcDdEe
 puts letters.capitalize
 #capitalizes the first letter and downcases the rest
-puts ' a'.capitalize
+puts 'a'.capitalize
 #this is a bit confusing - the capitalize method capitalizes only the first character, not the first letter.
 puts letters
 #your reg puts
@@ -497,7 +497,7 @@ if name == name.capitalize
   puts "Please take a seat, #{name}."
 else
   puts "#{name}...? You mean #{name}.capitalize, right?"
-  puts "Don\'t you even know how to spell your name??"
+  puts "Don't you even know how to spell your name??"
   reply = gets.chomp
 
   if reply.downcase == "yes"
@@ -638,6 +638,21 @@ not Called Logical NOT Operator. Use to reverses the logical state of its operan
 
 #7.5 a few things to try----------
 
+num_at_start = 5 # change to 99 if you want
+num_now = num_at_start
+
+while num_now > 2
+  puts num_now.to_s + ' bottles of beer on the wall, ' + num_now.to_s + ' bottles of beer!'
+  num_now = num_now - 1
+  puts 'Take one down, pass it around, ' + num_now.to_s + ' bottles of beer on the wall!'
+end
+
+puts "2 bottles of beer on the wall, 2 bottles of beer!"
+puts "Take one down, pass it around, 1 bottle of beer on the wall!"
+puts "1 bottle of beer on the wall, 1 bottle of beer!"
+puts "Take one down, pass it around, no more bottles of beer on the wall!"
+
+#HAS TO BE A BETTER WAY TO WRITE THIS, ASK FOR HELP
 
 ##8 arrays and iterators
 
@@ -840,3 +855,173 @@ puts
 
 
 ##9 writing your own methods
+
+puts 'Hello, and thank you for taking the time to'
+puts 'help me with this experiment. My experiment'
+puts 'has to do with the way people feel about'
+puts 'Mexican food. Just think about Mexican food'
+puts 'and try to answer every question honestly,'
+puts 'with either a "yes" or a "no". My experiment'
+puts 'has nothing to do with bed-wetting.'
+puts
+# We ask these questions, but we ignore their answers.
+while
+  puts "Do you like eating tacos?"
+  answer = gets.chomp.downcase
+    if answer == 'yes' || answer == 'no'
+      break
+    else
+      puts "Please answer yes or no"
+    end
+end
+
+while
+  puts "Do you like eating burritos?"
+  answer = gets.chomp.downcase
+    if answer == 'yes' || answer == 'no'
+      break
+    else
+      puts "Please answer yes or no"
+    end
+end
+#Prepared exclusively for Student report erratum • discuss
+#We pay attention to *this* answer, though.
+while
+  puts "Do you wet the bed?"
+  answer = gets.chomp.downcase
+  if answer == 'yes' || answer == 'no'
+  if answer == 'yes'
+    wets_bed = true
+  else
+    wets_bed = false
+  end
+    break
+  else
+    puts "Please answer yes or no"
+  end
+end
+while
+  puts "Do you like eating chimichangas?"
+  answer = gets.chomp.downcase
+  if answer == 'yes' || answer == 'no'
+    break
+  else
+    puts "Please answer yes or no"
+  end
+end
+puts "Just a few more questions..."
+while
+  puts "Do you like eating sopapillas?"
+  answer = gets.chomp.downcase
+  if answer == 'yes' || answer == 'no'
+    break
+  else
+    puts "Please answer yes or no"
+  end
+end
+# Ask lots of other questions about Mexican food.
+puts
+puts 'DEBRIEFING:'
+puts 'Thank you for taking the time to help with'
+puts 'this experiment. In fact, this experiment'
+puts 'has nothing to do with Mexican food. It is'
+puts 'an experiment about bed-wetting. The Mexican'
+puts 'food was just there to catch you off guard'
+puts 'in the hopes that you would answer more'
+puts 'honestly. Thanks again.'
+puts
+
+#IT DIDN'T ASK ME THE QUESTIONS????
+
+def say_moo
+  puts "moooooo...."
+end
+
+say_moo
+
+#returns
+
+moooooo....
+
+#REMEMBER YOU NEED TO CALL YOUR METHOD!!!
+
+##9.1 method parameters-----------
+
+def say_moo (number_of_moos) #the content in the parentheses is the variable
+  puts "moooooo...." * number_of_moos
+end
+
+say_moo 5 #this is the parameter
+puts "oink-oink"
+say_moo #this line will not work since you are adding a variable to the method say_moo
+
+#IF OBJECTS IN RUBY ARE LIKE NOUNS IN ENGLISH AND METHODS ARE LIKE VERBS, THEN YOU CAN THINK OF PARAMETERS AS ADVERBS
+
+#number_of_moos is a variable that points to the parameter passed in. I’ll say that
+#again, but it’s a little confusing: number_of_moos is a variable that points to the
+#parameter passed in. So, if I type say_moo 3, then the parameter is 3, and the
+#variable number_of_moos points to 3.
+#As you can see, the parameter is now required. After all, what is say_moo supposed
+#to multiply 'mooooooo...' by if you don’t give it a parameter? Your poor
+#computer has no idea.
+
+##9.2 local variables----------
+
+def double_this (num)
+  num_times_2 = num*2
+  puts "#{num} double is #{num_times_2}"
+end
+
+double_this 88
+
+#i understand this. need to practice more with writing code OVER AND OVER AND OVER AND OVER AAAAGGGGAAAAAAAAAAAIIINNNN!!!!!
+#what ever is inside the def and end are considered local variables. they can not be used outside. they both sit inside the method double_this.
+
+#below is an example of trying to call the variable num_times_2 which is inside the method double_this
+
+def double_this (num)
+  num_times_2 = num*2
+  puts "#{num} double is #{num_times_2}"
+end
+
+double_this 88
+
+puts num_times_2.to_s #gives you an error of undefined local variable or method 'num_time_2'
+
+#example
+
+tough_var = "You can't even touch my variable!"
+
+def little_pest (tough_var)
+  tough_var = puts "HAHA! I ruined your variable!"
+end
+
+little_pest tough_var
+puts tough_var
+
+#returns
+
+#HAHA! I ruined your variable!
+#You can't even touch my variable!
+
+#there are 2 variables that are the same tough_var and tough_var that is in the method little_pest.
+#they have no relation at all!!!!
+
+##9.3 experiment: duby----------
+
+#just explains what and why local variable is helpful
+
+##9.4 return values----------
+
+#know the difference when a method returns a value when called vs what your program is outputting on your screen
+
+#example
+
+#5+3 returns 8, it does not output 8 but it displays 8 on your screen
+
+#example
+
+return_val = puts "this puts returned:"
+puts return_val #puts always returns nil
+
+#every method has to return something even if its just nil

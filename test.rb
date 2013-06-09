@@ -1,15 +1,6 @@
-title = "Table of Contents"
-chapters = [["Getting Started", 1], ["Numbers", 9], ["Letters", 13]]
-
-puts title.center(50)
-puts
-
-	chapters.each_with_index do |chap, idx|
-		name, page = chap
-		chap_num = idx + 1
-		beginning = "Chapter #{chap_num}: #{name}"
-		ending = "page #{page}"
-		puts beginning.ljust(30) + ending.rjust(20)
-	end
-
-
+def say_moo (number_of_moos)
+puts "mooooooo..." * number_of_moos + "yellow submarine, dude..."
+end
+x = say_moo 3
+puts "#{x.capitalize}, dude..."
+puts "#{x}"
